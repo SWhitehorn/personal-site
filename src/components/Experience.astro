@@ -1,0 +1,22 @@
+---
+interface Props {
+	title: string;
+	link: string
+}
+
+const { title, link } = Astro.props;
+---
+
+<li>
+	<div class="experience-block">
+		<a class="font-bold my-1 underline" href={link}>
+			{title}
+		</a>
+		<slot/>
+	</div>
+</li>
+<style>
+	.experience-block {
+		width: 100%
+	}
+</style>

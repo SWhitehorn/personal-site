@@ -1,16 +1,51 @@
 ---
+import Experience from '../components/Experience.astro';
+import Project from '../components/Project.astro';
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import { getCollection } from 'astro:content';
+
+const experiences = await getCollection('experiences');
+const projects = await getCollection('projects');
+
 ---
 
 <Layout title="Seth Whitehorn">
 	<main>
-		<h1 class="font-bold">Seth Whitehorn</h1>
-		<p class="opening-block">
-			Hi, I'm Seth.
+		<h1 class="font-bold text-lg">Seth Whitehorn</h1>
+		<p class="opening para">
+			Hi, I'm <strong>Seth</strong>. I'm a <strong>full-stack engineer </strong>with experience working in fast-moving, product-focused environments.
 		</p>
-		<ul role="list" class="link-card-grid">
+		<p class="para">
+			I'm currently looking for full-stack or frontend roles where I can work with emerging technology and learn from great people.
+		</p>
+		<div class="my-8">
+			<h2 class="font-bold text-lg my-2">Experience</h2>
+			<ul role="list" class="link-card-grid">
+			{experiences.map(async e => {
+				const { title, link } = e.data
+				const { Content } = await e.render();
+				return (
+					<Experience title={title} link={link} >
+						<Content class="font-bold"/>	
+					</Experience>
+				)
+			})}
 		</ul>
+		</div>
+		<div class="my-8">
+			<h2 class="font-bold text-lg my-2">Projects</h2>
+			<ul role="list" class="link-card-grid">
+			{projects.map(async e => {
+				const { title, link, tags } = e.data
+				const { Content } = await e.render();
+				return (
+					<Project title={title} link={link} tags={tags}>
+						<Content class="font-bold"/>	
+					</Project>
+					)
+			})}
+			</ul>
+		</div>
 	</main>
 </Layout>
 
@@ -27,11 +62,12 @@ import Card from '../components/Card.astro';
 		background-size: 400%;
 		background-position: 0%;
 	}
-	.opening-block {
+	.opening {
+		margin: 1rem 0 0;
+	}
+	.para {
 		line-height: 1.6;
-		margin: 1rem 0;
-		padding: 1rem 0;
-		border-radius: 0.4rem;
+		padding: 1rem 0 0;
 	}
 	.instructions code {
 		font-size: 0.875em;
@@ -46,7 +82,6 @@ import Card from '../components/Card.astro';
 	}
 	.link-card-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
 		gap: 1rem;
 		padding: 0;
 	}
