@@ -1,4 +1,4 @@
-# Personal site
+# Personal site [![Netlify Status](https://api.netlify.com/api/v1/badges/87fbbca2-3be0-40d1-a592-e201be734933/deploy-status)](https://app.netlify.com/sites/sethwhitehorn/deploys)
 
 A basic personal website, created with Astro, styled with Tailwind, and deployed on Netlify.
  
