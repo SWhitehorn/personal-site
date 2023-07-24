@@ -3,6 +3,7 @@ import Experience from '../components/Experience.astro';
 import Project from '../components/Project.astro';
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import Footer from '../components/Footer.astro';
 
 const experiences = await getCollection('experiences');
 const projects = await getCollection('projects');
@@ -11,7 +12,7 @@ const projects = await getCollection('projects');
 
 <Layout title="Seth Whitehorn">
 	<main>
-		<h1 class="font-bold text-lg">Seth Whitehorn</h1>
+		<h1 class="font-bold text-xl">Seth Whitehorn</h1>
 		<p class="opening para">
 			Hi, I'm <strong>Seth</strong>. I'm a <strong>full-stack engineer </strong>with experience working in fast-moving, product-focused environments.
 		</p>
@@ -19,7 +20,7 @@ const projects = await getCollection('projects');
 			I'm currently looking for full-stack or frontend roles where I can work with emerging technology and learn from great people.
 		</p>
 		<div class="my-8">
-			<h2 class="font-bold text-lg my-2">Experience</h2>
+			<h2 class="font-bold text-xl my-5">Experience</h2>
 			<ul role="list" class="link-card-grid">
 			{experiences.map(async e => {
 				const { title, link } = e.data
@@ -33,7 +34,7 @@ const projects = await getCollection('projects');
 		</ul>
 		</div>
 		<div class="my-8">
-			<h2 class="font-bold text-lg my-2">Projects</h2>
+			<h2 class="font-bold text-xl my-5">Projects</h2>
 			<ul role="list" class="link-card-grid">
 			{projects.map(async e => {
 				const { title, link, tags } = e.data
@@ -42,9 +43,12 @@ const projects = await getCollection('projects');
 					<Project title={title} link={link} tags={tags}>
 						<Content class="font-bold"/>	
 					</Project>
-					)
+				)
 			})}
 			</ul>
+		</div>
+		<div class="contact">
+			<Footer />
 		</div>
 	</main>
 </Layout>
@@ -84,5 +88,8 @@ const projects = await getCollection('projects');
 		display: grid;
 		gap: 1rem;
 		padding: 0;
+	}
+	.contact {
+		border-top: 1px solid #78716c
 	}
 </style>
