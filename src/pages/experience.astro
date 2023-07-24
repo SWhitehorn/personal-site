@@ -1,15 +1,28 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 import Card from '../components/Card.astro';
+
+const experiences = await getCollection('experiences')
 ---
 
 <Layout title="Seth Whitehorn">
 	<main>
-		<h1 class="font-bold">Seth Whitehorn</h1>
+		<h1 class="font-bold">Experience</h1>
 		<p class="opening-block">
-			Hi, I'm Seth.
+			Things that I've done
 		</p>
 		<ul role="list" class="link-card-grid">
+            {experiences.map(async e => {
+                const {Content, headings} = await e.render()
+                return (
+                    <Card title='Rebellion Defense'>
+                    <Content />
+                        </Card>
+                )
+            }
+                
+            )}
 		</ul>
 	</main>
 </Layout>
