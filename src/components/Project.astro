@@ -14,7 +14,7 @@ const { title, link, tags } = Astro.props;
 			{title}
 		</a>
 		<slot/>
-        {tags.map((t, i) => <span class="font-light italic text-sm text-stone-500">{t}{i === tags.length-1 ? "" : ", " }</span>)}
+        {tags.map((t, i) => <span class="font-light italic text-sm text-stone-500 dark:text-stone-100">{t}{i === tags.length-1 ? "" : ", " }</span>)}
 	</div>
 </li>
 <style>
