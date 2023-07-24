@@ -1,7 +1,7 @@
 # Personal site
 
-A basic personal website, created with Astro.
-
+A basic personal website, created with Astro, styled with Tailwind, and deployed on Netlify.
+ 
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
