@@ -12,9 +12,14 @@ const projects = await getCollection('projects');
 
 <Layout title="Seth Whitehorn">
 	<main>
-		<h1 class="font-bold text-xl">Seth Whitehorn</h1>
+		<h1 class="font-thin text-xl">Seth Whitehorn</h1>
 		<p class="opening para">
-			Hi, I'm <strong>Seth</strong>. I'm a <strong>full-stack engineer </strong>with experience working in fast-moving, product-focused environments.
+			Hi, I'm <b>Seth</b>. I'm a <b>full-stack engineer </b>with experience working in fast-moving, product-focused environments building innovative solutions for defence and government customers.
+			I have a <b>MSc in Computer Science</b> from the University of Bath, where I focused on theoretical computer science and AI.
+		</p>
+		<p class="para">
+			At the moment I'm building a <b>network visualiser</b> and learning <b>Next.js 13</b>. I enjoy <b>functional programming</b>, and love <b>type safety</b>. 
+			If I'm away from the computer, I'll probably either have my head in a book or be out on a run.
 		</p>
 		<p class="para">
 			I'm currently looking for full-stack or frontend roles where I can work with emerging technology and learn from great people.
@@ -23,10 +28,10 @@ const projects = await getCollection('projects');
 			<h2 class="font-bold text-xl my-5">Experience</h2>
 			<ul role="list" class="link-card-grid">
 			{experiences.map(async e => {
-				const { title, link } = e.data
+				const { title, link, dates } = e.data
 				const { Content } = await e.render();
 				return (
-					<Experience title={title} link={link} >
+					<Experience title={title} link={link} dates={dates}>
 						<Content class="font-bold"/>	
 					</Experience>
 				)
@@ -57,7 +62,7 @@ const projects = await getCollection('projects');
 	main {
 		margin: auto;
 		padding: 1.5rem;
-		max-width: 60ch;
+		max-width: 80ch;
 	}
 	.text-gradient {
 		background-image: var(--accent-gradient);
@@ -81,7 +86,7 @@ const projects = await getCollection('projects');
 		border-radius: 4px;
 		padding: 0.3em 0.45em;
 	}
-	.instructions strong {
+	.instructions b {
 		color: rgb(var(--accent));
 	}
 	.link-card-grid {
